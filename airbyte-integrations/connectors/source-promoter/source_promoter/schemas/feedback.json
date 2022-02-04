@@ -1,0 +1,113 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": ["null", "integer"]
+    },
+    "href": {
+      "type": ["null", "string"]
+    },
+    "followup_href": {
+      "type": ["null", "string"]
+    },
+    "contact": {
+      "type": ["null", "object"],
+      "properties": {
+        "attributes": {
+          "type": ["null", "object"]
+        },
+        "first_name": {
+          "type": ["null", "string"]
+        },
+        "last_name": {
+          "type": ["null", "string"]
+        },
+        "id": {
+          "type": ["null", "integer"]
+        },
+        "email": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "campaign": {
+      "type": ["null", "object"],
+      "properties": {
+        "id": {
+          "type": ["null", "integer"]
+        },
+        "name": {
+          "type": ["null", "string"]
+        },
+        "launch_date": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "status": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "score": {
+      "type": ["null", "integer"]
+    },
+    "created": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "score_changed": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "score_type": {
+      "type": ["null", "string"]
+    },
+    "comment": {
+      "type": ["null", "string"]
+    },
+    "comment_created": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "comment_modified": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "tags": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "category": {
+            "type": ["null", "string"]
+          },
+          "name": {
+            "type": ["null", "string"]
+          }
+        }
+      }  
+    },
+    "survey": {
+      "type": ["null", "object"],
+      "properties": {
+        "id": {
+          "type": ["null", "integer"]
+        },
+        "attributes": {
+          "type": ["null", "object"]
+        },
+        "sent_date": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        }
+      }
+    },
+    "status": {
+      "type": ["null", "string"]
+    },
+    "status_changed": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    }
+  }
+}
