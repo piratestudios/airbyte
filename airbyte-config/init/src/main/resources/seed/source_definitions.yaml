@@ -2139,3 +2139,10 @@
   documentationUrl: https://docs.airbyte.io/integrations/sources/braze
   sourceType: api
   releaseStage: alpha
+- name: Zuper
+  sourceDefinitionId: 3df52509-7d2b-4c6f-8f96-04053f3a2e78
+  dockerRepository: airbyte/source-zuper
+  dockerImageTag: 0.1.0
+  documentationUrl: https://docs.airbyte.io/integrations/sources/zuper
+  sourceType: api
+  releaseStage: alpha
