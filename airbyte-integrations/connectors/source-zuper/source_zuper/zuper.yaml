@@ -141,10 +141,12 @@ definitions:
 
 streams:
   - "*ref(definitions.customers_stream)"
+  - "*ref(definitions.jobs_stream)"
 
 check:
   stream_names:
     - "customers"
+    - "jobs"
 
 spec:
   documentation_url: https://docs.airbyte.com/integrations/sources/braze
