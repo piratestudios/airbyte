@@ -14,6 +14,22 @@ definitions:
       type: ApiKeyAuthenticator
       header: "x-api-key"
       api_token: "{{ config['api_key'] }}"
+    request_options_provider:
+      request_parameters:
+        page: "{{ 1 if next_page_token['next_page_token'] is not defined }}"
+  paginator:
+    type: DefaultPaginator
+    url_base: "*ref(definitions.requester.url_base)"
+    pagination_strategy:
+      type: "PageIncrement"
+      start_from_page: 1
+      page_size: 10
+    page_size_option:
+      inject_into: request_parameter
+      field_name: count
+    page_token_option:
+      inject_into: request_parameter
+      field_name: page
   stream_slicer:
     type: "DatetimeStreamSlicer"
     start_datetime:
@@ -37,19 +53,7 @@ definitions:
     record_selector:
       $ref: "*ref(definitions.selector)"
     paginator:
-      type: DefaultPaginator
-      url_base: "*ref(definitions.requester.url_base)"
-      page_size_option:
-        inject_into: request_parameter
-        field_name: "{{ options['pagination_page_size_field'] }}"
-      pagination_strategy:
-        type: PageIncrement
-        page_size: 10
-      page_token_option:
-        inject_into: request_parameter
-        field_name: page
-    stream_slicer:
-      $ref: "*ref(definitions.stream_slicer)"
+      $ref: "*ref(definitions.paginator)"
     requester:
       $ref: "*ref(definitions.requester)"
   base_stream:
@@ -79,27 +83,35 @@ definitions:
     $options:
       name: "jobs"
       primary_key: "job_uid"
-      path: "/jobs?filter.created_at_to={{ today_utc() }}"
+      path: "/jobs"
       stream_cursor_field: "created_at"
-      pagination_page_size_field: "count"
+    retriever:
+      $ref: "*ref(definitions.retriever)"
+      stream_slicer:
+        $ref: "*ref(definitions.stream_slicer)"
   organizations_stream:
     $ref: "*ref(definitions.base_stream)"
     $options:
       name: "organizations"
       primary_key: "organization_uid"
       path: "/organization"
-  parts:
+  parts_stream:
     $ref: "*ref(definitions.base_stream)"
     $options:
       name: "parts"
       primary_key: "product_uid"
       path: "/product"
-  part_transactions:
+  part_transactions_stream:
     $ref: "*ref(definitions.base_stream)"
     $options:
       name: "part_transactions"
       primary_key: "transaction_uid"
       path: "/product/transaction"
+      stream_cursor_field: "created_at"
+      retriever:
+        $ref: "*ref(definitions.retriever)"
+        stream_slicer:
+          $ref: "*ref(definitions.stream_slicer)"
   ppms_stream:
     $ref: "*ref(definitions.base_stream)"
     $options:
@@ -112,61 +124,37 @@ definitions:
       name: "properties"
       primary_key: "property_uid"
       path: "/property"
-  quotes_stream:
-    $ref: "*ref(definitions.base_stream)"
-    $options:
-      name: "quotes"
-      primary_key: "estimate_uid"
-      path: "/estimate"
-  routes_stream:
-    $ref: "*ref(definitions.base_stream)"
-    $options:
-      name: "routes"
-      primary_key: "route_uid"
-      path: "/routes"
-  service_contracts_stream:
-    $ref: "*ref(definitions.base_stream)"
-    $options:
-      name: "service_contracts"
-      primary_key: "contract_uid"
-      path: "/service_contract"
-  service_territories_stream:
-    $ref: "*ref(definitions.base_stream)"
-    $options:
-      name: "service_territories"
-      primary_key: "territory_uid"
-      path: "/territory"
   teams_stream:
     $ref: "*ref(definitions.base_stream)"
     $options:
       name: "teams"
       primary_key: "team_uid"
       path: "/teams/summary"
-  timesheets_stream:
-    $ref: "*ref(definitions.base_stream)"
-    $options:
-      name: "timesheets"
-      primary_key: "employee_timesheet_uid"
-      path: "/timesheets"
   users_stream:
     $ref: "*ref(definitions.base_stream)"
     $options:
       name: "users"
       primary_key: "user_uid"
       path: "/user/all"
-  webhooks_stream:
-    $ref: "*ref(definitions.base_stream)"
-    $options:
-      name: "properties"
-      primary_key: "property_uid"
-      path: "/property"
+
 
 streams:
+  - "*ref(definitions.assets_stream)"
+  - "*ref(definitions.customers_stream)"
+  - "*ref(definitions.invoices_stream)"
   - "*ref(definitions.jobs_stream)"
+  - "*ref(definitions.organizations_stream)"
+  - "*ref(definitions.parts_stream)"
+  - "*ref(definitions.part_transactions_stream)"
+  - "*ref(definitions.ppms_stream)"
+  - "*ref(definitions.properties_stream)"
+  - "*ref(definitions.teams_stream)"
+  - "*ref(definitions.users_stream)"
+
 
 check:
   stream_names:
-    - "jobs"
+    - "customers"
 
 spec:
   documentation_url: https://docs.airbyte.com/integrations/sources/braze

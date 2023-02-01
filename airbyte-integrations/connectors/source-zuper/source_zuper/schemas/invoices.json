@@ -2,112 +2,92 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "no_of_jobs": { 
+    "total": {
       "type": "number"
     },
-    "is_active": { 
-      "type": "boolean"
-    },
-    "is_deleted": { 
-      "type": "boolean"
-    },
-    "property_name": { 
+    "invoice_status": {
       "type": "string"
     },
-    "property_address": {
+    "is_paid": {
+      "type": "boolean"
+    },
+    "is_deleted": {
+      "type": "boolean"
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "customer": {
       "type": "object",
       "properties": {
-        "street": { 
+        "customer_first_name": {
           "type": "string"
         },
-        "state": { 
+        "customer_last_name": {
           "type": "string"
         },
-        "country": { 
+        "customer_company_name": {
           "type": "string"
         },
-        "zip_code": { 
+        "customer_email": {
           "type": "string"
         },
-        "city": { 
-          "type": "string"
-        },
-        "geo_cordinates": {
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
-        }
-      }
-    },
-    "property_customers": {
-      "type": "array",
-      "items": {
-        "customer": {
+        "customer_contact_no": {
           "type": "object",
           "properties": {
-            "customer_last_name": { 
+            "mobile": {
               "type": "string"
             },
-            "customer_email": { 
+            "home": {
               "type": "string"
-            },
-            "customer_first_name": { 
-              "type": "string"
-            },
-            "customer_uid": { 
-              "type": "string"
-            },
-            "customer_contact_no": {
-              "type": "object",
-              "properties": {
-                "mobile": { 
-                  "type": "string"
-                },
-                "home": { 
-                  "type": "string"
-                }
-              }
             }
           }
+        },
+        "customer_uid": {
+          "type": "string"
         }
       }
     },
-    "custom_fields": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "hide_to_fe": {
-            "type": "boolean"
-          },
-          "label": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "property_image": {
-      "type": "string"
-    },
-    "property_organization": {
+    "job": {
       "type": "object",
       "properties": {
-        "organization_name": {
+        "job_uid": {
           "type": "string"
         },
-        "organization_logo": {
+        "job_title": {
           "type": "string"
         },
-        "organization_uid": {
+        "job_priority": {
           "type": "string"
+        },
+        "scheduled_start_time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "scheduled_end_time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "work_order_number": {
+          "type": "number"
         }
       }
     },
-    "property_uid": {
+    "prefix": {
+      "type": "string"
+    },
+    "reference_no": {
+      "type": "string"
+    },
+    "invoice_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "invoice_uid": {
       "type": "string"
     },
     "created_by": {
@@ -115,6 +95,12 @@
       "properties": {
         "user_uid": {
           "type": "string"
+        },
+        "emp_code": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": ["string", "null"]
         },
         "first_name": {
           "type": "string"
@@ -125,20 +111,50 @@
         "email": {
           "type": "string"
         },
-        "home_phone_number": {
-          "type": "string"
-        },
         "designation": {
           "type": "string"
         },
-        "emp_code": {
-          "type": "string"
+        "home_phone_number": {
+          "type": ["string", "null"]
         },
         "work_phone_number": {
-          "type": "string"
+          "type": ["string", "null"]
+        },
+        "mobile_phone_number": {
+          "type": ["string", "null"]
         },
         "profile_picture": {
           "type": "string"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "is_deleted": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "object",
+          "properties": {
+            "role_id": {
+              "type": "number"
+            },
+            "role_uid": {
+              "type": "string"
+            },
+            "role_name": {
+              "type": "string"
+            },
+            "role_key": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
         }
       }
     },
@@ -149,6 +165,9 @@
     "updated_at": {
       "type": "string",
       "format": "date-time"
+    },
+    "invoice_no": {
+      "type": "number"
     }
   }
 }

@@ -1,0 +1,290 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "is_active": {
+            "type": "boolean"
+        },
+        "is_deleted": {
+            "type": "boolean"
+        },
+        "asset": {
+            "type": "object",
+            "properties": {
+                "asset_serial_number": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "asset_quantity": {
+                    "type": "number"
+                },
+                "asset_code": {
+                    "type": "string"
+                },
+                "asset_name": {
+                    "type": "string"
+                },
+                "asset_uid": {
+                    "type": "string"
+                }
+            }    
+        },
+        "ppm_uid": {
+            "type": "string"
+        },
+        "created_by": {
+            "type": "object",
+            "properties": {
+                "user_uid": {
+                    "type": "string"
+                },
+                "emp_code": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": ["string", "null"]
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "designation": {
+                    "type": "string"
+                },
+                "home_phone_number": {
+                    "type": ["string", "null"]
+                },
+                "work_phone_number": {
+                    "type": ["string", "null"]
+                },
+                "mobile_phone_number": {
+                    "type": ["string", "null"]
+                },
+                "profile_picture": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "is_deleted": {
+                    "type": "boolean"
+                },
+                "role": {
+                    "type": "object",
+                    "properties": {
+                        "role_id": {
+                            "type": "number"
+                        },
+                        "role_uid": {
+                            "type": "string"
+                        },
+                        "role_name": {
+                            "type": "string"
+                        },
+                        "role_key": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "updated_at": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "ppm_number": {
+            "type": "number"
+        },
+        "estimated_duration": {
+            "type": "number"
+        },
+        "frequency": {
+            "type": "string"
+        },
+        "next_service_date": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "period": {
+            "type": "number"
+        },
+        "priority": {
+            "type": "string"
+        },
+        "product": {
+            "type": "object",
+            "properties": {
+                "product_ref_id": {
+                    "type": "object",
+                    "properties": {
+                        "product_id": {
+                            "type": "string"
+                        },
+                        "product_image": {
+                            "type": "string"
+                        },
+                        "product_barcode": {
+                            "type": "string"
+                        },
+                        "product_files": {
+                            "type": "array"
+                        },
+                        "product_description": {
+                            "type": "string"
+                        },
+                        "product_manual_link": {
+                            "type": "string"
+                        },
+                        "quantity": {
+                            "type": "number"
+                        },
+                        "currency": {
+                            "type": "string"
+                        },
+                        "price": {
+                            "type": "number"
+                        },
+                        "is_available": true,
+                        "is_deleted": false,
+                        "location_availability": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "min_quantity": {
+                                        "type": "number"
+                                    },
+                                    "serial_nos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "location": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "number"
+                                    },
+                                    "created_at": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                }
+                            }
+                        },
+                        "meta_data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "product_type": {
+                            "type": "string"
+                        },
+                        "product_name": {
+                            "type": "string"
+                        },
+                        "prefix": {
+                            "type": "string"
+                        },
+                        "product_uid": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string"
+                        },
+                        "product_no": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "product_uid": {
+                    "type": "string"
+                }
+            }
+        },
+        "service_contract": {
+            "approval_status": {
+                "type": "string"
+            },
+            "is_active": {
+                "type": "boolean"
+            },
+            "is_expired": {
+                "type": "boolean"
+            },
+            "is_deleted": {
+                "type": "boolean"
+            },
+            "prefix": {
+                "type": "string"
+            },
+            "contract_name": {
+                "type": "string"
+            },
+            "ref_no": {
+                "type": "string"
+            },
+            "term_months": {
+                "type": "number"
+            },
+            "description": {
+                "type": "string"
+            },
+            "start_date": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "end_date": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "activation_date": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "contract_uid": {
+                "type": "string"
+            },
+            "contract_subtotal": {
+                "type": "number"
+            },
+            "contract_total": {
+                "type": "number"
+            },
+            "contract_number": {
+                "type": "number"
+            }
+        }
+    }    
+}

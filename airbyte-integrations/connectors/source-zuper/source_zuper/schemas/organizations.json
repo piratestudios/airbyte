@@ -2,34 +2,37 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "no_of_jobs": { 
-      "type": "number"
-    },
-    "is_active": { 
+    "is_active": {
       "type": "boolean"
     },
-    "is_deleted": { 
+    "is_deleted": {
       "type": "boolean"
     },
-    "property_name": { 
+    "organization_name": {
       "type": "string"
     },
-    "property_address": {
+    "organization_description": {
+      "type": ["string", "null"]
+    },
+    "organization_logo": {
+      "type": ["string", "null"]
+    },
+    "organization_address": {
       "type": "object",
       "properties": {
-        "street": { 
+        "street": {
           "type": "string"
         },
-        "state": { 
+        "state": {
           "type": "string"
         },
-        "country": { 
+        "country": {
           "type": "string"
         },
-        "zip_code": { 
+        "zip_code": {
           "type": "string"
         },
-        "city": { 
+        "city": {
           "type": "string"
         },
         "geo_cordinates": {
@@ -40,74 +43,7 @@
         }
       }
     },
-    "property_customers": {
-      "type": "array",
-      "items": {
-        "customer": {
-          "type": "object",
-          "properties": {
-            "customer_last_name": { 
-              "type": "string"
-            },
-            "customer_email": { 
-              "type": "string"
-            },
-            "customer_first_name": { 
-              "type": "string"
-            },
-            "customer_uid": { 
-              "type": "string"
-            },
-            "customer_contact_no": {
-              "type": "object",
-              "properties": {
-                "mobile": { 
-                  "type": "string"
-                },
-                "home": { 
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "custom_fields": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "hide_to_fe": {
-            "type": "boolean"
-          },
-          "label": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "property_image": {
-      "type": "string"
-    },
-    "property_organization": {
-      "type": "object",
-      "properties": {
-        "organization_name": {
-          "type": "string"
-        },
-        "organization_logo": {
-          "type": "string"
-        },
-        "organization_uid": {
-          "type": "string"
-        }
-      }
-    },
-    "property_uid": {
+    "organization_uid": {
       "type": "string"
     },
     "created_by": {
@@ -115,6 +51,12 @@
       "properties": {
         "user_uid": {
           "type": "string"
+        },
+        "emp_code": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": ["string", "null"]
         },
         "first_name": {
           "type": "string"
@@ -125,22 +67,55 @@
         "email": {
           "type": "string"
         },
-        "home_phone_number": {
-          "type": "string"
-        },
         "designation": {
           "type": "string"
         },
-        "emp_code": {
-          "type": "string"
+        "home_phone_number": {
+          "type": ["string", "null"]
         },
         "work_phone_number": {
-          "type": "string"
+          "type": ["string", "null"]
+        },
+        "mobile_phone_number": {
+          "type": ["string", "null"]
         },
         "profile_picture": {
           "type": "string"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "is_deleted": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "object",
+          "properties": {
+            "role_id": {
+              "type": "number"
+            },
+            "role_uid": {
+              "type": "string"
+            },
+            "role_name": {
+              "type": "string"
+            },
+            "role_key": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
         }
       }
+    },
+    "no_of_customers": {
+      "type": "number"
     },
     "created_at": {
       "type": "string",

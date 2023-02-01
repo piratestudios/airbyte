@@ -1,5 +1,6 @@
 {
   "jobs": {
-    "created_at": "9999-05-04T00:00:00.000Z"
+    "filter.created_at_from": "9999-05-04",
+    "filter.created_at_to": "9999-05-05"
   }
 }
