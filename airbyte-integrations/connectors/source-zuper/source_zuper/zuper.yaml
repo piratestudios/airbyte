@@ -139,14 +139,14 @@ definitions:
 
 
 streams:
-  - "*ref(definitions.assets_stream)"
+  # - "*ref(definitions.assets_stream)"
   - "*ref(definitions.customers_stream)"
-  - "*ref(definitions.invoices_stream)"
+  # - "*ref(definitions.invoices_stream)"
   - "*ref(definitions.jobs_stream)"
   - "*ref(definitions.organizations_stream)"
   - "*ref(definitions.parts_stream)"
   - "*ref(definitions.part_transactions_stream)"
-  - "*ref(definitions.ppms_stream)"
+  # - "*ref(definitions.ppms_stream)"
   - "*ref(definitions.properties_stream)"
   - "*ref(definitions.teams_stream)"
   - "*ref(definitions.users_stream)"
