@@ -1,4 +1,4 @@
-documentationUrl: https://docs.airbyte.com/integrations/sources/braze
+documentationUrl: https://docs.airbyte.com/integrations/sources/zuper
 connectionSpecification:
   $schema: http://json-schema.org/draft-07/schema#
   title: Zuper Spec
