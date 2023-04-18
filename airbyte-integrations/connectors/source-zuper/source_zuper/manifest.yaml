@@ -1,0 +1,128 @@
+version: "0.29.0"
+
+definitions:
+  selector:
+    extractor:
+      field_path: ["data"]
+  requester:
+    url_base: "https://us-west-1c.zuperpro.com/api"
+    http_method: "GET"
+    authenticator:
+      type: "ApiKeyAuthenticator"
+      header: "x-api-key"
+      api_token: "{{ config['api_key'] }}"
+    request_options_provider:
+      request_parameters:
+        page: "{{ 1 if next_page_token['next_page_token'] is not defined }}"
+  paginator:
+    type: "DefaultPaginator"
+    pagination_strategy:
+      type: "PageIncrement"
+      start_from_page: 1
+      page_size: 10
+    page_token_option:
+      type: "RequestOption"
+      inject_into: request_parameter
+      field_name: page
+    page_size_option:
+      type: "RequestOption"
+      inject_into: request_parameter
+      field_name: count
+  retriever:
+    record_selector:
+      $ref: "#/definitions/selector"
+    paginator:
+      $ref: "#/definitions/paginator"
+    requester:
+      $ref: "#/definitions/requester"
+  base_stream:
+    retriever:
+      $ref: "#/definitions/retriever"
+  customers_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "customers"
+      primary_key: "customer_uid"
+      path: "/customers"
+  jobs_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "jobs"
+      primary_key: "job_uid"
+      path: "/jobs"
+      stream_cursor_field: "created_at"
+  organizations_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "organizations"
+      primary_key: "organization_uid"
+      path: "/organization"
+  parts_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "parts"
+      primary_key: "product_uid"
+      path: "/product"
+  part_transactions_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "part_transactions"
+      primary_key: "transaction_uid"
+      path: "/product/transaction"
+  properties_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "properties"
+      primary_key: "property_uid"
+      path: "/property"
+  teams_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "teams"
+      primary_key: "team_uid"
+      path: "/teams/summary"
+  users_stream:
+    $ref: "#/definitions/base_stream"
+    $parameters:
+      name: "users"
+      primary_key: "user_uid"
+      path: "/user/all"
+
+
+streams:
+  - "#/definitions/customers_stream"
+  - "#/definitions/jobs_stream"
+  # - "#/definitions/organizations_stream"
+  # - "#/definitions/parts_stream"
+  # - "#/definitions/part_transactions_stream"
+  # - "#/definitions/properties_stream"
+  # - "#/definitions/teams_stream"
+  # - "#/definitions/users_stream"
+
+check:
+  type: CheckStream
+  stream_names:
+    - "customers"
+
+spec:
+  type: Spec
+  documentation_url: https://docs.airbyte.com/integrations/sources/zuper
+  connection_specification:
+    title: Zuper Spec
+    type: object
+    required:
+      - api_key
+      - start_date
+    additionalProperties: true
+    properties:
+      start_date:
+        type: string
+        description: Start getting data from that date.
+        pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}$
+        examples:
+          - YYYY-MM-DD
+      api_key:
+        type: string
+        title: API Key
+        description: API Key
+        airbyte_secret: true

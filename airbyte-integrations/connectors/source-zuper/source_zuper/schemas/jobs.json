@@ -1,0 +1,549 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "job_uid": {
+        "type": "string"
+        },
+        "customer": {
+        "type": "object",
+        "properties": {
+            "customer_last_name": {
+            "type": "string"
+            },
+            "customer_company_name": {
+            "type": "string"
+            },
+            "customer_email": {
+            "type": "string"
+            },
+            "is_active": {
+            "type": "boolean"
+            },
+            "is_deleted": {
+            "type": "boolean"
+            },
+            "customer_first_name": {
+            "type": "string"
+            },
+            "customer_contact_no": {
+            "type": ["object", "null"],
+            "properties": {
+                "home": {
+                "type": ["string", "null"]
+                },
+                "mobile": {
+                "type": ["string", "null"]
+                },
+                "work": {
+                "type": ["string", "null"]
+                }
+            }
+            },
+            "customer_uid": {
+            "type": "string"
+            },
+            "customer_organization": {
+            "type": "object",
+            "properties": {
+                "is_active": {
+                "type": "boolean"
+                },
+                "is_deleted": {
+                "type": "boolean"
+                },
+                "organization_address": {
+                "type": "object",
+                "properties": {
+                    "geo_cordinates": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                    },
+                    "street": {
+                    "type": "string"
+                    },
+                    "city": {
+                    "type": "string"
+                    },
+                    "state": {
+                    "type": "string"
+                    },
+                    "country": {
+                    "type": "string"
+                    },
+                    "zip_code": {
+                    "type": "string"
+                    },
+                    "landmark": {
+                    "type": "string"
+                    }
+                }
+                },
+                "organization_name": {
+                "type": "string"
+                },
+                "organization_uid": {
+                "type": "string"
+                }
+            }
+            }
+        }
+        },
+        "prefix": {
+        "type": ["string", "null"]
+        },
+        "delayed_job": {
+        "type": "boolean"
+        },
+        "assigned_to": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+            "user": {
+                "type": "object",
+                "properties": {
+                "user_uid": {
+                    "type": "string"
+                },
+                "emp_code": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": ["string", "null"]
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "designation": {
+                    "type": "string"
+                },
+                "home_phone_number": {
+                    "type": ["string", "null"]
+                },
+                "work_phone_number": {
+                    "type": ["string", "null"]
+                },
+                "mobile_phone_number": {
+                    "type": ["string", "null"]
+                },
+                "profile_picture": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "is_deleted": {
+                    "type": "boolean"
+                },
+                "role": {
+                    "type": "object",
+                    "properties": {
+                    "role_id": {
+                        "type": "number"
+                    },
+                    "role_uid": {
+                        "type": "string"
+                    },
+                    "role_name": {
+                        "type": "string"
+                    },
+                    "role_key": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                    }
+                }
+                }
+            },
+            "team": {
+                "type": "object",
+                "properties": {
+                "team_uid": {
+                    "type": "string"
+                },
+                "team_name": {
+                    "type": "string"
+                },
+                "team_color": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "is_deleted": {
+                    "type": "boolean"
+                }
+                }
+            }
+            }
+        }
+        },
+        "job_title": {
+        "type": "string"
+        },
+        "job_category": {
+        "type": "object",
+        "properties": {
+            "category_name": {
+            "type": "string"
+            },
+            "category_uid": {
+            "type": "string"
+            },
+            "category_color": {
+            "type": "string"
+            },
+            "estimated_duration": {
+            "type": "object",
+            "properties": {
+                "hours": {
+                "type": "number"
+                },
+                "minutes": {
+                "type": "number"
+                }
+            }
+            }
+        }
+        },
+        "job_priority": {
+        "type": "string"
+        },
+        "job_type": {
+        "type": "string"
+        },
+        "job_tags": {
+        "type": "array",
+        "items": {
+            "type": "string"
+        }
+        },
+        "scheduled_start_time": {
+        "type": "string",
+        "format": "date-time"
+        },
+        "scheduled_end_time": {
+        "type": "string",
+        "format": "date-time"
+        },
+        "current_job_status": {
+        "type": "object",
+        "properties": {
+            "status_uid": {
+            "type": "string"
+            },
+            "status_name": {
+            "type": "string"
+            },
+            "status_type": {
+            "type": "string"
+            },
+            "status_color": {
+            "type": "string"
+            }
+        }
+        },
+        "job_status": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+            "status_uid": {
+                "type": "string"
+            },
+            "status_name": {
+                "type": "string"
+            },
+            "status_type": {
+                "type": "string"
+            },
+            "status_color": {
+                "type": "string"
+            },
+            "checklist": {
+                "type": ["array", "null"],
+                "items": {
+                "type": "object"
+                }
+            },
+            "created_at": {
+                "type": "string",
+                "format": "date-time"
+            }
+            }
+        }
+        },
+        "customer_address": {
+        "type": "object",
+        "properties": {
+            "landmark": {
+            "type": "string"
+            },
+            "city": {
+            "type": "string"
+            },
+            "state": {
+            "type": "string"
+            },
+            "street": {
+            "type": "string"
+            },
+            "country": {
+            "type": "string"
+            },
+            "zip_code": {
+            "type": "string"
+            },
+            "geo_cordinates": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+            },
+            "first_name": {
+            "type": "string"
+            },
+            "last_name": {
+            "type": "string"
+            },
+            "phone_number": {
+            "type": "string"
+            },
+            "email": {
+            "type": "string"
+            }
+        } 
+        },
+        "customer_billing_address": {
+        "type": "object",
+        "properties": {
+            "landmark": {
+            "type": "string"
+            },
+            "city": {
+            "type": "string"
+            },
+            "state": {
+            "type": "string"
+            },
+            "street": {
+            "type": "string"
+            },
+            "country": {
+            "type": "string"
+            },
+            "zip_code": {
+            "type": "string"
+            },
+            "geo_cordinates": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+            },
+            "first_name": {
+            "type": "string"
+            },
+            "last_name": {
+            "type": "string"
+            },
+            "phone_number": {
+            "type": "string"
+            },
+            "email": {
+            "type": "string"
+            }
+        } 
+        },
+        "custom_fields": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+            "label": {
+                "type": "string"
+            },
+            "value": {
+                "type": "string"
+            },
+            "type": {
+                "type": "string"
+            },
+            "hide_to_fe": {
+                "type": "boolean"
+            },
+            "hide_field": {
+                "type": "boolean"
+            },
+            "read_only": {
+                "type": "boolean"
+            },
+            "group_name": {
+                "type": "string"
+            },
+            "group_uid": {
+                "type": "string"
+            }
+            }
+        }
+        },
+        "products": {
+        "type": "array",
+        "items": {
+            "type": ["object", "null"],
+            "properties": {
+            "product_id": {
+                "type": "string"
+            },
+            "product_name": {
+                "type": "string"
+            },
+            "product_image": {
+                "type": "string"
+            },
+            "quantity": {
+                "type": "number"
+            },
+            "currency": {
+                "type": "string"
+            },
+            "price": {
+                "type": "number"
+            },
+            "meta_data": {
+                "type": "array",
+                "items": {
+                "type": "string"
+                }
+            }
+            }
+        }
+        },
+        "is_recurrence": {
+        "type": "boolean"
+        },
+        "created_by": {
+        "type": "object",
+        "properties": {
+            "user_uid": {
+            "type": "string"
+            },
+            "emp_code": {
+            "type": "string"
+            },
+            "prefix": {
+            "type": ["string", "null"]
+            },
+            "first_name": {
+            "type": "string"
+            },
+            "last_name": {
+            "type": "string"
+            },
+            "email": {
+            "type": "string"
+            },
+            "designation": {
+            "type": "string"
+            },
+            "home_phone_number": {
+            "type": ["string", "null"]
+            },
+            "work_phone_number": {
+            "type": ["string", "null"]
+            },
+            "mobile_phone_number": {
+            "type": ["string", "null"]
+            },
+            "profile_picture": {
+            "type": "string"
+            },
+            "is_active": {
+            "type": "boolean"
+            },
+            "is_deleted": {
+            "type": "boolean"
+            },
+            "role": {
+            "type": "object",
+            "properties": {
+                "role_id": {
+                "type": "number"
+                },
+                "role_uid": {
+                "type": "string"
+                },
+                "role_name": {
+                "type": "string"
+                },
+                "role_key": {
+                "type": "string"
+                },
+                "created_at": {
+                "type": "string",
+                "format": "date-time"
+                },
+                "updated_at": {
+                "type": "string"
+                }
+            }
+            }
+        }
+        },
+        "is_deleted": {
+        "type": "boolean"
+        },
+        "assigned_to_team": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+            "team_uid": {
+                "type": "string"
+            },
+            "team_name": {
+                "type": "string"
+            },
+            "team_color": {
+                "type": "string"
+            },
+            "is_active": {
+                "type": "boolean"
+            },
+            "is_deleted": {
+                "type": "boolean"
+            }
+            }
+        }
+        },
+        "created_at": {
+        "type": "string",
+        "format": "date-time"
+        },
+        "work_order_number": {
+        "type": "number"
+        },
+        "route": {
+        "type": "null"
+        },
+        "scheduled_duration": {
+        "type": "number"
+        }
+    }
+}

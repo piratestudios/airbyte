@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "customer_last_name": {
+      "type": "string"
+    },
+    "customer_company_name": {
+      "type": ["string", "null"]
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "customer_address": {
+      "city": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "street": {
+        "type": "string"
+      },
+      "zip_code": {
+        "type": "string"
+      }
+    },
+    "customer_billing_address": {
+      "city": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "street": {
+        "type": "string"
+      },
+      "zip_code": {
+        "type": "string"
+      }
+    },
+    "no_of_jobs": {
+      "type": "number"
+    },
+    "customer_tags": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "string"
+      }
+    },
+    "has_sla": {
+      "type": ["boolean", "null"]
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "account_manager": {
+      "type": ["object", "null"],
+      "properties": {
+        "user_uid": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "home_phone_number": {
+          "type": "string"
+        },
+        "work_phone_number": {
+          "type": "string"
+        },
+        "profile_picture": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "emp_code": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "is_deleted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "customer_contact_no": {
+        "type": ["object", "null"],
+        "properties": {
+        "home": {
+          "type": ["string", "null"]
+        },
+        "mobile": {
+          "type": ["string", "null"]
+        },
+        "work": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "customer_first_name": {
+      "type": "string"
+    },
+    "customer_category": {
+      "type": ["object", "null"],
+      "properties": {
+        "category_name": {
+          "type": ["string", "null"]
+        },
+        "category_uid": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "sla_duration": {
+      "type": ["object", "null"],
+      "properties": {
+        "hours": {
+          "type": ["number", "null"]
+        },
+        "minutes": {
+          "type": ["number", "null"]
+        },
+        "days": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "custom_fields": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "hide_to_fe": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "customer_uid": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "accounts": {
+      "type": "object",
+      "properties": {
+        "billing_frequency": {
+          "type": "string"
+        },
+        "payment_term": {
+          "type": "string"
+        },
+        "tax_group": {
+          "type": "string"
+        }
+      }
+    },
+    "has_card_on_file": {
+      "type": "boolean"
+    },
+    "customer_organization": {
+      "type": ["object", "null"],
+      "properties": {
+        "organization_uid": {
+          "type": "string"
+        },
+        "organization_name": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "is_deleted": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
+  
