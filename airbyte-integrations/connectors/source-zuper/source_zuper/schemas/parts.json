@@ -1,0 +1,233 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "product_uid": {
+      "type": "string"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "product_category": {
+      "type": "object",
+      "properties": {
+        "category_name": {
+          "type": "string"
+        },
+        "category_uid": {
+          "type": "string"
+        }
+      }
+    },
+    "product_image": {
+      "type": "string"
+    },
+    "product_barcode": {
+      "type": "string"
+    },
+    "product_files": {
+      "type": "array"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "product_description": {
+      "type": "string"
+    },
+    "product_type": {
+      "type": "string"
+    },
+    "meta_data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "hide_to_fe": {
+            "type": "boolean"
+          },
+          "_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "product_manual_link": {
+      "type": "string"
+    },
+    "location_availability": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "object",
+            "properties": {
+              "location_uid": {
+                "type": "string"
+              },
+              "location_name": {
+                "type": "string"
+              },
+              "is_deleted": {
+                "type": "boolean"
+              }
+            }
+          },
+          "quantity": {
+            "type": ["number", "null"]
+          },
+          "min_quantity": {
+            "type": ["number", "null"]
+          },
+          "serial_nos": {
+            "type": "array"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "track_quantity": {
+      "type": ["boolean", "null"]
+    },
+    "quantity": {
+      "type": ["number", "null"]
+    },
+    "min_quantity": {
+      "type": ["number", "null"]
+    },
+    "currency": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "purchase_price": {
+      "type": ["number", "null"]
+    },
+    "has_custom_tax": {
+      "type": "boolean"
+    },
+    "is_available": {
+      "type": "boolean"
+    },
+    "is_deleted": {
+      "type": "boolean"
+    },
+    "created_by": {
+      "type": "object",
+      "properties": {
+        "user_uid": {
+          "type": "string"
+        },
+        "emp_code": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": ["string", "null"]
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "home_phone_number": {
+          "type": ["string", "null"]
+        },
+        "work_phone_number": {
+          "type": ["string", "null"]
+        },
+        "mobile_phone_number": {
+          "type": ["string", "null"]
+        },
+        "profile_picture": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "is_deleted": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "object",
+          "properties": {
+            "role_id": {
+              "type": "number"
+            },
+            "role_uid": {
+              "type": "string"
+            },
+            "role_name": {
+              "type": "string"
+            },
+            "role_key": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "product_no": {
+      "type": "number"
+    },
+    "id": {
+      "type": "string"
+    },
+    "specification": {
+      "type": "string"
+    },
+    "uom": {
+      "type": "string"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "null"
+      }
+    },
+    "tax": {
+      "type": ["object", "null"],
+      "properties": {
+        "tax_name": {
+          "type": "string"
+        },
+        "tax_rate": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

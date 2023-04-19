@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "no_of_jobs": {
+      "type": "number"
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "is_deleted": {
+      "type": "boolean"
+    },
+    "property_name": {
+      "type": "string"
+    },
+    "property_address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "geo_cordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "property_customers": {
+      "type": "array",
+      "items": {
+        "customer": {
+          "type": "object",
+          "properties": {
+            "customer_last_name": {
+              "type": "string"
+            },
+            "customer_email": {
+              "type": "string"
+            },
+            "customer_first_name": {
+              "type": "string"
+            },
+            "customer_uid": {
+              "type": "string"
+            },
+            "customer_contact_no": {
+              "mobile": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "custom_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hide_to_fe": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "property_image": {
+      "type": "string"
+    },
+    "property_organization": {
+      "type": ["object", "null"],
+      "properties": {
+        "organization_name": {
+          "type": "string"
+        },
+        "organization_logo": {
+          "type": ["string", "null"]
+        },
+        "organization_uid": {
+          "type": "string"
+        }
+      }
+    },
+    "property_uid": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "object",
+      "properties": {
+        "user_uid": {
+          "type": "string"
+        },
+        "emp_code": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": ["string", "null"]
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "designation": {
+          "type": "string"
+        },
+        "home_phone_number": {
+          "type": ["string", "null"]
+        },
+        "work_phone_number": {
+          "type": ["string", "null"]
+        },
+        "mobile_phone_number": {
+          "type": ["string", "null"]
+        },
+        "profile_picture": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "is_deleted": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "object",
+          "properties": {
+            "role_id": {
+              "type": "number"
+            },
+            "role_uid": {
+              "type": "string"
+            },
+            "role_name": {
+              "type": "string"
+            },
+            "role_key": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "null"
+      }
+    },
+    "parent_property": {
+      "type": "null"
+    }
+  }
+}

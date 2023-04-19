@@ -97,6 +97,18 @@
         "delayed_job": {
         "type": "boolean"
         },
+        "due_date": {
+            "type": ["string", "null"],
+            "format": "date-time"
+        },    
+        "invoice": {
+            "type": ["object", "null"],
+            "properties": {
+                "is_invoiced": {
+                    "type": "boolean"
+                }
+            }
+        },
         "assigned_to": {
         "type": "array",
         "items": {
@@ -544,6 +556,67 @@
         },
         "scheduled_duration": {
         "type": "number"
+        },
+        "actual_duration": {
+            "type": ["number", "null"]
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "actual_start_time": {
+            "type": ["string", "null"],
+            "format": "date-time"
+        },
+        "actual_end_time": {
+            "type": ["string", "null"],
+            "format": "date-time"
+        },
+        "organization": {
+            "type": ["object", "null"],
+            "properties": {
+                "is_active": {
+                "type": "boolean"
+                },
+                "is_deleted": {
+                "type": "boolean"
+                },
+                "organization_address": {
+                "type": "object",
+                "properties": {
+                    "geo_cordinates": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                    },
+                    "street": {
+                    "type": "string"
+                    },
+                    "city": {
+                    "type": "string"
+                    },
+                    "state": {
+                    "type": "string"
+                    },
+                    "country": {
+                    "type": "string"
+                    },
+                    "zip_code": {
+                    "type": "string"
+                    },
+                    "landmark": {
+                    "type": "string"
+                    }
+                }
+                },
+                "organization_name": {
+                "type": "string"
+                },
+                "organization_uid": {
+                "type": "string"
+                }
+            }
         }
     }
 }

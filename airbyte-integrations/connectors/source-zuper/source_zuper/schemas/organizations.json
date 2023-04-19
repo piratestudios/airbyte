@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "is_active": {
+      "type": "boolean"
+    },
+    "is_deleted": {
+      "type": "boolean"
+    },
+    "organization_name": {
+      "type": "string"
+    },
+    "organization_description": {
+      "type": ["string", "null"]
+    },
+    "organization_logo": {
+      "type": ["string", "null"]
+    },
+    "organization_address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "geo_cordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "organization_uid": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "object",
+      "properties": {
+        "user_uid": {
+          "type": "string"
+        },
+        "emp_code": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": ["string", "null"]
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": ["string", "null"]
+        },
+        "designation": {
+          "type": "string"
+        },
+        "home_phone_number": {
+          "type": ["string", "null"]
+        },
+        "work_phone_number": {
+          "type": ["string", "null"]
+        },
+        "mobile_phone_number": {
+          "type": ["string", "null"]
+        },
+        "profile_picture": {
+          "type": "string"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "is_deleted": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "object",
+          "properties": {
+            "role_id": {
+              "type": "number"
+            },
+            "role_uid": {
+              "type": "string"
+            },
+            "role_name": {
+              "type": "string"
+            },
+            "role_key": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "no_of_customers": {
+      "type": "number"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "organization_email": {
+      "type": ["string", "null"]
+    },
+    "id": {
+      "type": "string"
+    },
+    "organization_billing_address": {
+      "city": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "first_name": {
+        "type": "string"
+      },
+      "last_name": {
+        "type": "string"
+      },
+      "street": {
+        "type": "string"
+      },
+      "zip_code": {
+        "type": "string"
+      }
+    }
+  }
+}
