@@ -12,7 +12,7 @@
       "type": "string"
     },
     "team_description": {
-      "type": ["string", "null"]
+      "type": ["null", "string"]
     },
     "user_count": {
       "type": "number"
@@ -29,7 +29,7 @@
       "format": "date-time"
     },
     "created_by": {
-      "type": ["object", "null"],
+      "type": ["null", "object"],
       "properties": {
           "user_uid": {
           "type": "string"
@@ -38,7 +38,7 @@
           "type": "string"
           },
           "prefix": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
           },
           "first_name": {
           "type": "string"
@@ -53,13 +53,13 @@
           "type": "string"
           },
           "home_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
           },
           "work_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
           },
           "mobile_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
           },
           "profile_picture": {
           "type": "string"

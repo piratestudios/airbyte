@@ -9,7 +9,7 @@
       "type": "string"
     },
     "customer_company_name": {
-      "type": ["string", "null"]
+      "type": ["null", "string"]
     },
     "customer_email": {
       "type": "string"
@@ -58,19 +58,19 @@
       "type": "number"
     },
     "customer_tags": {
-      "type": ["array", "null"],
+      "type": ["null", "array"],
       "items": {
         "type": "string"
       }
     },
     "has_sla": {
-      "type": ["boolean", "null"]
+      "type": ["null", "boolean"]
     },
     "is_active": {
       "type": "boolean"
     },
     "account_manager": {
-      "type": ["object", "null"],
+      "type": ["null", "object"],
       "properties": {
         "user_uid": {
           "type": "string"
@@ -108,16 +108,16 @@
       }
     },
     "customer_contact_no": {
-        "type": ["object", "null"],
+        "type": ["null", "object"],
         "properties": {
         "home": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "mobile": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "work": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         }
       }
     },
@@ -125,32 +125,32 @@
       "type": "string"
     },
     "customer_category": {
-      "type": ["object", "null"],
+      "type": ["null", "object"],
       "properties": {
         "category_name": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "category_uid": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         }
       }
     },
     "sla_duration": {
-      "type": ["object", "null"],
+      "type": ["null", "object"],
       "properties": {
         "hours": {
-          "type": ["number", "null"]
+          "type": ["null", "number"]
         },
         "minutes": {
-          "type": ["number", "null"]
+          "type": ["null", "number"]
         },
         "days": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         }
       }
     },
     "custom_fields": {
-      "type": ["array", "null"],
+      "type": ["null", "array"],
       "items": {
         "type": "object",
         "properties": {
@@ -191,7 +191,7 @@
       "type": "boolean"
     },
     "customer_organization": {
-      "type": ["object", "null"],
+      "type": ["null", "object"],
       "properties": {
         "organization_uid": {
           "type": "string"

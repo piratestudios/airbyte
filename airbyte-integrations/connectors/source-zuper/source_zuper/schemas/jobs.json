@@ -27,16 +27,16 @@
             "type": "string"
             },
             "customer_contact_no": {
-            "type": ["object", "null"],
+            "type": ["null", "object"],
             "properties": {
                 "home": {
-                "type": ["string", "null"]
+                "type": ["null", "string"]
                 },
                 "mobile": {
-                "type": ["string", "null"]
+                "type": ["null", "string"]
                 },
                 "work": {
-                "type": ["string", "null"]
+                "type": ["null", "string"]
                 }
             }
             },
@@ -92,17 +92,17 @@
         }
         },
         "prefix": {
-        "type": ["string", "null"]
+        "type": ["null", "string"]
         },
         "delayed_job": {
         "type": "boolean"
         },
         "due_date": {
-            "type": ["string", "null"],
+            "type": ["null", "string"],
             "format": "date-time"
         },    
         "invoice": {
-            "type": ["object", "null"],
+            "type": ["null", "object"],
             "properties": {
                 "is_invoiced": {
                     "type": "boolean"
@@ -124,7 +124,7 @@
                     "type": "string"
                 },
                 "prefix": {
-                    "type": ["string", "null"]
+                    "type": ["null", "string"]
                 },
                 "first_name": {
                     "type": "string"
@@ -139,13 +139,13 @@
                     "type": "string"
                 },
                 "home_phone_number": {
-                    "type": ["string", "null"]
+                    "type": ["null", "string"]
                 },
                 "work_phone_number": {
-                    "type": ["string", "null"]
+                    "type": ["null", "string"]
                 },
                 "mobile_phone_number": {
-                    "type": ["string", "null"]
+                    "type": ["null", "string"]
                 },
                 "profile_picture": {
                     "type": "string"
@@ -289,7 +289,7 @@
                 "type": "string"
             },
             "checklist": {
-                "type": ["array", "null"],
+                "type": ["null", "array"],
                 "items": {
                 "type": "object"
                 }
@@ -418,7 +418,7 @@
         "products": {
         "type": "array",
         "items": {
-            "type": ["object", "null"],
+            "type": ["null", "object"],
             "properties": {
             "product_id": {
                 "type": "string"
@@ -460,7 +460,7 @@
             "type": "string"
             },
             "prefix": {
-            "type": ["string", "null"]
+            "type": ["null", "string"]
             },
             "first_name": {
             "type": "string"
@@ -475,13 +475,13 @@
             "type": "string"
             },
             "home_phone_number": {
-            "type": ["string", "null"]
+            "type": ["null", "string"]
             },
             "work_phone_number": {
-            "type": ["string", "null"]
+            "type": ["null", "string"]
             },
             "mobile_phone_number": {
-            "type": ["string", "null"]
+            "type": ["null", "string"]
             },
             "profile_picture": {
             "type": "string"
@@ -558,22 +558,22 @@
         "type": "number"
         },
         "actual_duration": {
-            "type": ["number", "null"]
+            "type": ["null", "number"]
         },
         "updated_at": {
             "type": "string",
             "format": "date-time"
         },
         "actual_start_time": {
-            "type": ["string", "null"],
+            "type": ["null", "string"],
             "format": "date-time"
         },
         "actual_end_time": {
-            "type": ["string", "null"],
+            "type": ["null", "string"],
             "format": "date-time"
         },
         "organization": {
-            "type": ["object", "null"],
+            "type": ["null", "object"],
             "properties": {
                 "is_active": {
                 "type": "boolean"

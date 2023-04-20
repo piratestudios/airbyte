@@ -86,10 +86,10 @@
             }
           },
           "quantity": {
-            "type": ["number", "null"]
+            "type": ["null", "number"]
           },
           "min_quantity": {
-            "type": ["number", "null"]
+            "type": ["null", "number"]
           },
           "serial_nos": {
             "type": "array"
@@ -102,13 +102,13 @@
       }
     },
     "track_quantity": {
-      "type": ["boolean", "null"]
+      "type": ["null", "boolean"]
     },
     "quantity": {
-      "type": ["number", "null"]
+      "type": ["null", "number"]
     },
     "min_quantity": {
-      "type": ["number", "null"]
+      "type": ["null", "number"]
     },
     "currency": {
       "type": "string"
@@ -117,7 +117,7 @@
       "type": "number"
     },
     "purchase_price": {
-      "type": ["number", "null"]
+      "type": ["null", "number"]
     },
     "has_custom_tax": {
       "type": "boolean"
@@ -138,7 +138,7 @@
           "type": "string"
         },
         "prefix": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "first_name": {
           "type": "string"
@@ -153,13 +153,13 @@
           "type": "string"
         },
         "home_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "work_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "mobile_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "profile_picture": {
           "type": "string"
@@ -219,7 +219,7 @@
       }
     },
     "tax": {
-      "type": ["object", "null"],
+      "type": ["null", "object"],
       "properties": {
         "tax_name": {
           "type": "string"

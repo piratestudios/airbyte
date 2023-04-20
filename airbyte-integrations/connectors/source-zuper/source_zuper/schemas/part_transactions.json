@@ -15,7 +15,7 @@
             "type": "string"
         },
         "module_uid": {
-            "type": ["string", "null"]
+            "type": ["null", "string"]
         },
         "type": {
             "type": "string"
@@ -32,7 +32,7 @@
             }
         },
         "from_location": {
-            "type": ["object", "null"],
+            "type": ["null", "object"],
             "properties": {
                 "location_uid": {
                     "type": "string"
@@ -43,7 +43,7 @@
             }
         },
         "to_location": {
-            "type": ["object", "null"],
+            "type": ["null", "object"],
             "properties": {
                 "location_uid": {
                     "type": "string"
@@ -66,7 +66,7 @@
             }
         },
         "purchase_price": {
-            "type": ["number", "null"]
+            "type": ["null", "number"]
         },
         "is_deleted": {
             "type": "boolean"
@@ -81,7 +81,7 @@
                     "type": "string"
                 },
                 "prefix": {
-                    "type": ["string", "null"]
+                    "type": ["null", "string"]
                 },
                 "first_name": {
                     "type": "string"
@@ -96,13 +96,13 @@
                     "type": "string"
                 },
                 "home_phone_number": {
-                    "type": ["string", "null"]
+                    "type": ["null", "string"]
                 },
                 "work_phone_number": {
-                    "type": ["string", "null"]
+                    "type": ["null", "string"]
                 },
                 "mobile_phone_number": {
-                    "type": ["string", "null"]
+                    "type": ["null", "string"]
                 },
                 "profile_picture": {
                     "type": "string"

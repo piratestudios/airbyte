@@ -88,13 +88,13 @@
       "type": "string"
     },
     "property_organization": {
-      "type": ["object", "null"],
+      "type": ["null", "object"],
       "properties": {
         "organization_name": {
           "type": "string"
         },
         "organization_logo": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "organization_uid": {
           "type": "string"
@@ -114,7 +114,7 @@
           "type": "string"
         },
         "prefix": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "first_name": {
           "type": "string"
@@ -129,13 +129,13 @@
           "type": "string"
         },
         "home_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "work_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "mobile_phone_number": {
-          "type": ["string", "null"]
+          "type": ["null", "string"]
         },
         "profile_picture": {
           "type": "string"

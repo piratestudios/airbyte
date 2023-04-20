@@ -15,7 +15,7 @@
       "type": "string"
     },
     "home_phone_number": {
-      "type": ["string", "null"]
+      "type": ["null", "string"]
     },
     "designation": {
       "type": "string"
@@ -24,7 +24,7 @@
       "type": "string"
     },
     "work_phone_number": {
-      "type": ["string", "null"]
+      "type": ["null", "string"]
     },
     "profile_picture": {
       "type": "string"
@@ -58,7 +58,7 @@
       }
     },
     "access_role": {
-      "type": ["object", "null"],
+      "type": ["null", "object"],
       "properties": {
         "access_role_uid": {
           "type": "string"
@@ -72,16 +72,16 @@
       }
     },
     "external_login_id": {
-      "type": ["string", "null"]
+      "type": ["null", "string"]
     },
     "prefix": {
-      "type": ["string", "null"]
+      "type": ["null", "string"]
     },
     "hourly_labor_charge": {
       "type": "null"
     },
     "mobile_phone_number": {
-      "type": ["string", "null"]
+      "type": ["null", "string"]
     }
   }
 }
