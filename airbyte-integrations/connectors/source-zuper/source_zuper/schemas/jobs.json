@@ -3,45 +3,45 @@
     "type": "object",
     "properties": {
         "job_uid": {
-        "type": "string"
+            "type": "string"
         },
         "customer": {
-        "type": "object",
-        "properties": {
-            "customer_last_name": {
-            "type": "string"
-            },
-            "customer_company_name": {
-            "type": "string"
-            },
-            "customer_email": {
-            "type": "string"
-            },
-            "is_active": {
-            "type": "boolean"
-            },
-            "is_deleted": {
-            "type": "boolean"
-            },
-            "customer_first_name": {
-            "type": "string"
-            },
-            "customer_contact_no": {
-            "type": ["null", "object"],
+            "type": "object",
             "properties": {
-                "home": {
-                "type": ["null", "string"]
+                "customer_last_name": {
+                "type": "string"
                 },
-                "mobile": {
-                "type": ["null", "string"]
+                "customer_company_name": {
+                "type": "string"
                 },
-                "work": {
-                "type": ["null", "string"]
+                "customer_email": {
+                "type": "string"
+                },
+                "is_active": {
+                "type": "boolean"
+                },
+                "is_deleted": {
+                "type": "boolean"
+                },
+                "customer_first_name": {
+                "type": "string"
+                },
+                "customer_contact_no": {
+                "type": ["null", "object"],
+                "properties": {
+                    "home": {
+                    "type": ["null", "string"]
+                    },
+                    "mobile": {
+                    "type": ["null", "string"]
+                    },
+                    "work": {
+                    "type": ["null", "string"]
+                    }
                 }
-            }
             },
             "customer_uid": {
-            "type": "string"
+                "type": "string"
             },
             "customer_organization": {
             "type": "object",

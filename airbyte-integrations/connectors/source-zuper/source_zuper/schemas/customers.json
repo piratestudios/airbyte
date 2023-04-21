@@ -15,43 +15,49 @@
       "type": "string"
     },
     "customer_address": {
-      "city": {
-        "type": "string"
-      },
-      "email": {
-        "type": "string"
-      },
-      "first_name": {
-        "type": "string"
-      },
-      "last_name": {
-        "type": "string"
-      },
-      "street": {
-        "type": "string"
-      },
-      "zip_code": {
-        "type": "string"
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        }
       }
     },
     "customer_billing_address": {
-      "city": {
-        "type": "string"
-      },
-      "email": {
-        "type": "string"
-      },
-      "first_name": {
-        "type": "string"
-      },
-      "last_name": {
-        "type": "string"
-      },
-      "street": {
-        "type": "string"
-      },
-      "zip_code": {
-        "type": "string"
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string"
+        }
       }
     },
     "no_of_jobs": {
