@@ -18,7 +18,7 @@
       "type": "number"
     },
     "is_active": {
-      "type": "number"
+      "type": "boolean"
     },
     "created_at": {
       "type": "string",
@@ -65,10 +65,10 @@
           "type": "string"
           },
           "is_active": {
-          "type": "number"
+          "type": "boolean"
           },
           "is_deleted": {
-          "type": "number"
+          "type": "boolean"
           },
           "role": {
           "type": "object",
