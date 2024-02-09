@@ -2,70 +2,7 @@
   "streams": [
     {
       "stream": {
-        "name": "customers",
-        "json_schema": {},
-        "supported_sync_modes": ["full_refresh"]
-      },
-      "sync_mode": "full_refresh",
-      "destination_sync_mode": "overwrite"
-    },
-    {
-      "stream": {
-        "name": "jobs",
-        "json_schema": {},
-        "supported_sync_modes": ["full_refresh"]
-      },
-      "sync_mode": "full_refresh",
-      "destination_sync_mode": "overwrite"
-    },
-    {
-      "stream": {
-        "name": "organizations",
-        "json_schema": {},
-        "supported_sync_modes": ["full_refresh"]
-      },
-      "sync_mode": "full_refresh",
-      "destination_sync_mode": "overwrite"
-    },
-    {
-      "stream": {
-        "name": "part_transactions",
-        "json_schema": {},
-        "supported_sync_modes": ["full_refresh"]
-      },
-      "sync_mode": "full_refresh",
-      "destination_sync_mode": "overwrite"
-    },
-    {
-      "stream": {
-        "name": "parts",
-        "json_schema": {},
-        "supported_sync_modes": ["full_refresh"]
-      },
-      "sync_mode": "full_refresh",
-      "destination_sync_mode": "overwrite"
-    },
-    {
-      "stream": {
-        "name": "properties",
-        "json_schema": {},
-        "supported_sync_modes": ["full_refresh"]
-      },
-      "sync_mode": "full_refresh",
-      "destination_sync_mode": "overwrite"
-    },
-    {
-      "stream": {
-        "name": "teams",
-        "json_schema": {},
-        "supported_sync_modes": ["full_refresh"]
-      },
-      "sync_mode": "full_refresh",
-      "destination_sync_mode": "overwrite"
-    },
-    {
-      "stream": {
-        "name": "users",
+        "name": "assets",
         "json_schema": {},
         "supported_sync_modes": ["full_refresh"]
       },
