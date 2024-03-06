@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "job_uid": {
+            "type": "string"
+        },
+        "property": {
+            "type": ["null", "object"],
+            "properties": {
+                "property_uid": {
+                    "type": "string"
+                },
+                "property_name": {
+                    "type": "string"
+                },
+                "no_of_jobs": {
+                    "type": "number"
+                },
+                "property_address": {
+                    "type": "object",
+                    "properties": {
+                        "city": {
+                            "type": "string"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "street": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "string"
+                        },
+                        "zip_code": {
+                            "type": "string"
+                        },
+                        "_id": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "custom_fields": {
+                    "type": "array",
+                    "items": {
+                        "type": ["null","object"],
+                        "properties": {
+                            "label": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "hide_to_fe": {
+                                "type": "boolean"
+                            },
+                            "group_name": {
+                                "type": "string"
+                            },
+                            "group_uid": {
+                                "type": "string"
+                            },
+                            "_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "is_deleted": {
+                    "type": "boolean"
+                },
+                "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "asset_uid": {
+            "type": "string"
+        },
+        "asset_code": {
+            "type": ["null","string"]
+        },
+        "asset_serial_number": {
+            "type": ["null","string"]
+        },
+        "asset_image": {
+            "type": ["null","string"]
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "id": {
+            "type": "string"
+        },
+        "asset_description": {
+            "type": ["string", "null"]
+        },
+        "asset_quantity": {
+            "type": "number"
+        },
+        "purchase_date": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "asset_name": {
+            "type": "string"
+        },
+        "asset_status": {
+            "type": "string"
+        },
+        "is_deleted": {
+            "type": "boolean"
+        },
+        "is_active": {
+            "type": "boolean"
+        },
+        "asset_category": {
+            "type": "object",
+            "properties": {
+                "category_uid": {
+                    "type": "string"
+                },
+                "category_name": {
+                    "type": "string"
+                },
+                "is_deleted":  {
+                    "type": "boolean"
+                }
+            }
+        },
+        "customer": {
+            "type": "object",
+            "properties": {
+                "customer_uid": {
+                    "type": "string"
+                }
+            }
+        },
+        "organization": {
+            "type": "object",
+            "properties": {
+                "organization_uid": {
+                    "type": "string"
+                }
+            }
+        },
+        "property": {
+            "type": "object",
+            "properties": {
+                "property_uid": {
+                    "type": "string"
+                }
+            }
+        },
+        "created_by": {
+            "type": "object",
+            "properties": {
+                "user_uid": {
+                    "type": "string"
+                }
+            }
+        },
+        "custom_fields": {
+            "type": ["array","null"],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
