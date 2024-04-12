@@ -41,8 +41,8 @@ definitions:
     paginator:
       type: NoPagination
 
-streams:
-  - type: DeclarativeStream
+  spotify_track:
+    type: DeclarativeStream
     name: spotify_track
     primary_key:
       - uuid
@@ -94,7 +94,9 @@ streams:
       partition_router:
         $ref: "#/definitions/partition_router"
         entity_name: 'track'
-  - type: DeclarativeStream
+  
+  spotify_artist:
+    type: DeclarativeStream
     name: spotify_artist
     primary_key:
       - uuid
@@ -157,6 +159,82 @@ streams:
       partition_router:
         $ref: "#/definitions/partition_router"
         entity_name: 'artist'
+  
+  spotify_artist_tracks:
+    type: DeclarativeStream
+    name: spotify_artist_tracks
+    primary_key:
+      - uuid
+    schema_loader:
+      type: InlineSchemaLoader
+      schema:
+        $schema: http://json-schema.org/schema#
+        properties:
+          data:
+            items:
+              properties:
+                artists:
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      slug:
+                        type: string
+                      uuid:
+                        type: string
+                    type: object
+                  type: array
+                image:
+                  type: string
+                link_id:
+                  type: string
+                release_date:
+                  type: string
+                sample:
+                  type: string
+                slug:
+                  type: string
+                streams_12m:
+                  type: number
+                streams_1m:
+                  type: number
+                streams_1m_growth:
+                  type: number
+                streams_1w:
+                  type: number
+                streams_1w_growth:
+                  type: number
+                streams_all:
+                  type: number
+                title:
+                  type: string
+                uuid:
+                  type: string
+              type: object
+            type: array
+          name:
+            type: string
+          slug:
+            type: string
+          uuid:
+            type: string
+        type: object
+    retriever:
+      $ref: "#/definitions/retriever"
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/spotify/tracks"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artist"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+
+streams:
+  - "#/definitions/spotify_track"
+  - "#/definitions/spotify_artist"
+  - "#/definitions/spotify_artist_tracks"
 
 spec:
   connection_specification:
@@ -176,3 +254,4 @@ metadata:
   autoImportSchema:
     spotify_track: true
     spotify_artist: true
+    spotify_artist_tracks: true
