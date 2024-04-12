@@ -12,16 +12,19 @@ readme = "README.md"
 documentation = "https://docs.airbyte.com/integrations/sources/viberate"
 homepage = "https://airbyte.com"
 repository = "https://github.com/airbytehq/airbyte"
-packages = [ { include = "source_viberate", from="src"}, {include = "main.py", from = "src"} ]
+packages = [ { include = "source_viberate" }, {include = "main.py" } ]
 
 [tool.poetry.dependencies]
 python = "^3.9,<3.12"
 airbyte-cdk = "^0"
+google-cloud-bigquery = ">0"
+pandas = ">0"
+db-dtypes = ">0"
 
 [tool.poetry.scripts]
 source-viberate = "source_viberate.run:run"
 
 [tool.poetry.group.dev.dependencies]
-requests-mock = "^1.9.3"
-pytest-mock = "^3.6.1"
-pytest = "^6.1"
+requests-mock = "*"
+pytest-mock = "*"
+pytest = "*"

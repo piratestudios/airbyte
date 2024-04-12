@@ -1,0 +1,178 @@
+version: 0.65.0
+type: DeclarativeSource
+check:
+  type: CheckStream
+  stream_names:
+    - spotify_track
+
+definitions:
+  requester:
+    type: HttpRequester
+    url_base: https://data.viberate.com/api/v1/
+    http_method: GET
+    request_parameters: {}
+    request_headers: {}
+    authenticator:
+      type: ApiKeyAuthenticator
+      api_token: '{{ config[''api_key''] }}'
+      inject_into:
+        type: RequestOption
+        field_name: Access-Key
+        inject_into: header
+    request_body_json: {}
+    error_handler:
+      response_filters:
+          - http_codes: [ 404 ]
+            action: IGNORE
+  
+  partition_router:
+    type: CustomPartitionRouter
+    class_name: source_viberate.components.SpotifyPartitionRouter
+    cursor_field: spotify_id
+
+  retriever:
+    type: SimpleRetriever
+    record_selector:
+      type: RecordSelector
+      extractor:
+        type: DpathExtractor
+        field_path:
+          - data
+    paginator:
+      type: NoPagination
+
+streams:
+  - type: DeclarativeStream
+    name: spotify_track
+    primary_key:
+      - uuid
+    schema_loader:
+      type: InlineSchemaLoader
+      schema:
+        $schema: http://json-schema.org/schema#
+        properties:
+          artists:
+            items:
+              properties:
+                name:
+                  type: string
+                slug:
+                  type: string
+                uuid:
+                  type: string
+              type: object
+            type: array
+          genre:
+            properties:
+              id:
+                type: number
+              name:
+                type: string
+              slug:
+                type: string
+            type: object
+          image:
+            type: string
+          isrc:
+            type: string
+          name:
+            type: string
+          release_date:
+            type: string
+          sample:
+            type: string
+          slug:
+            type: string
+          uuid:
+            type: string
+        type: object
+    retriever:
+      $ref: "#/definitions/retriever"
+      requester:
+        $ref: "#/definitions/requester"
+        path: "track/by-channel/spotify/{{ stream_partition.spotify_id }}"
+      partition_router:
+        $ref: "#/definitions/partition_router"
+        entity_name: 'track'
+  - type: DeclarativeStream
+    name: spotify_artist
+    primary_key:
+      - uuid
+    schema_loader:
+      type: InlineSchemaLoader
+      schema:
+        $schema: http://json-schema.org/schema#
+        properties:
+          country:
+            properties:
+              alpha2:
+                type: string
+              continent_code:
+                type: string
+              name:
+                type: string
+              slug:
+                type: string
+            type: object
+          genre:
+            properties:
+              id:
+                type: number
+              name:
+                type: string
+              slug:
+                type: string
+            type: object
+          image:
+            type: string
+          name:
+            type: string
+          rank:
+            type: number
+          slug:
+            type: string
+          status:
+            type: string
+          subgenres:
+            items:
+              properties:
+                id:
+                  type: number
+                name:
+                  type: string
+                slug:
+                  type: string
+              type: object
+            type: array
+          uuid:
+            type: string
+          verified:
+            type: boolean
+        type: object
+    retriever:
+      $ref: "#/definitions/retriever"
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/by-channel/spotify/{{ stream_partition.spotify_id }}"
+      partition_router:
+        $ref: "#/definitions/partition_router"
+        entity_name: 'artist'
+
+spec:
+  connection_specification:
+    $schema: http://json-schema.org/draft-07/schema#
+    type: object
+    required:
+      - api_key
+    properties:
+      api_key:
+        type: string
+        title: API Key
+        airbyte_secret: true
+        order: 0
+    additionalProperties: true
+  type: Spec
+metadata:
+  autoImportSchema:
+    spotify_track: true
+    spotify_artist: true
