@@ -4,6 +4,7 @@
 
 from dataclasses import InitVar, dataclass
 from typing import Any, Iterable, List, Mapping, Optional, Union
+import json
 
 from airbyte_cdk.sources.declarative.interpolation.interpolated_string import InterpolatedString
 from airbyte_cdk.sources.declarative.requesters.request_option import RequestOption, RequestOptionType
@@ -11,6 +12,7 @@ from airbyte_cdk.sources.declarative.stream_slicers.stream_slicer import StreamS
 from airbyte_cdk.sources.declarative.types import Config, StreamSlice, StreamState
 
 from google.cloud import bigquery
+from google.oauth2 import service_account
 
 @dataclass
 class SpotifyPartitionRouter(StreamSlicer):
@@ -75,7 +77,9 @@ class SpotifyPartitionRouter(StreamSlicer):
         return self._get_request_option(RequestOptionType.body_json, stream_slice)
 
     def stream_slices(self) -> Iterable[StreamSlice]:
-        bq_client = bigquery.Client()
+        json_acct_info = json.loads(self.config['gcp_credentials'])
+        credentials = service_account.Credentials.from_service_account_info(json_acct_info)
+        bq_client = bigquery.Client(credentials=credentials)
         query = f"""
             select      
                 spotify_id

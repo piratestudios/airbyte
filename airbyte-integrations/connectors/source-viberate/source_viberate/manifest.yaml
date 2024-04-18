@@ -242,12 +242,19 @@ spec:
     type: object
     required:
       - api_key
+      - gcp_credentials
     properties:
       api_key:
         type: string
         title: API Key
         airbyte_secret: true
         order: 0
+      gcp_credentials:
+        type: string
+        title: GCP Credentials JSON
+        airbyte_secret: true
+        order: 1
+        multiline: true
     additionalProperties: true
   type: Spec
 metadata:
