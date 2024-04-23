@@ -24,6 +24,20 @@ definitions:
       response_filters:
           - http_codes: [ 404 ]
             action: IGNORE
+
+  paginator:
+    type: "DefaultPaginator"
+    page_size_option:
+      type: "RequestOption"
+      inject_into: "request_parameter"
+      field_name: "limit"
+    pagination_strategy:
+      type: "OffsetIncrement"
+      page_size: 10
+    page_token_option:
+      type: "RequestOption"
+      field_name: "offset"
+      inject_into: "request_parameter"
   
   partition_router:
     type: CustomPartitionRouter
@@ -38,8 +52,6 @@ definitions:
         type: DpathExtractor
         field_path:
           - data
-    paginator:
-      type: NoPagination
 
   spotify_track:
     type: DeclarativeStream
@@ -94,6 +106,9 @@ definitions:
       partition_router:
         $ref: "#/definitions/partition_router"
         entity_name: 'track'
+      paginator:
+        type: NoPagination
+
   
   spotify_artist:
     type: DeclarativeStream
@@ -159,6 +174,9 @@ definitions:
       partition_router:
         $ref: "#/definitions/partition_router"
         entity_name: 'artist'
+      paginator:
+        type: NoPagination
+
   
   spotify_artist_tracks:
     type: DeclarativeStream
@@ -230,6 +248,8 @@ definitions:
           - stream: "#/definitions/spotify_artist"
             parent_key: "uuid"
             partition_field: "parent_id"
+      paginator:
+        $ref: "#/definitions/paginator"
 
 streams:
   - "#/definitions/spotify_track"
