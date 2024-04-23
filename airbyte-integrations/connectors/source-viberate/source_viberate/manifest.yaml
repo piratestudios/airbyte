@@ -44,15 +44,6 @@ definitions:
     class_name: source_viberate.components.SpotifyPartitionRouter
     cursor_field: spotify_id
 
-  retriever:
-    type: SimpleRetriever
-    record_selector:
-      type: RecordSelector
-      extractor:
-        type: DpathExtractor
-        field_path:
-          - data
-
   spotify_track:
     type: DeclarativeStream
     name: spotify_track
@@ -99,7 +90,12 @@ definitions:
             type: string
         type: object
     retriever:
-      $ref: "#/definitions/retriever"
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
       requester:
         $ref: "#/definitions/requester"
         path: "track/by-channel/spotify/{{ stream_partition.spotify_id }}"
@@ -167,7 +163,12 @@ definitions:
             type: boolean
         type: object
     retriever:
-      $ref: "#/definitions/retriever"
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
       requester:
         $ref: "#/definitions/requester"
         path: "artist/by-channel/spotify/{{ stream_partition.spotify_id }}"
@@ -238,7 +239,12 @@ definitions:
             type: string
         type: object
     retriever:
-      $ref: "#/definitions/retriever"
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data","data" ]
       requester:
         $ref: "#/definitions/requester"
         path: "artist/{{ stream_partition.parent_id }}/spotify/tracks"
