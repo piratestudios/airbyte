@@ -55,45 +55,8 @@ definitions:
     primary_key:
       - uuid
     schema_loader:
-      type: InlineSchemaLoader
-      schema:
-        $schema: http://json-schema.org/schema#
-        properties:
-          artists:
-            items:
-              properties:
-                name:
-                  type: string
-                slug:
-                  type: string
-                uuid:
-                  type: string
-              type: object
-            type: array
-          genre:
-            properties:
-              id:
-                type: number
-              name:
-                type: string
-              slug:
-                type: string
-            type: object
-          image:
-            type: string
-          isrc:
-            type: string
-          name:
-            type: string
-          release_date:
-            type: string
-          sample:
-            type: string
-          slug:
-            type: string
-          uuid:
-            type: string
-        type: object
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/spotify_track.json"
     retriever:
       type: SimpleRetriever
       record_selector:
@@ -110,63 +73,14 @@ definitions:
       paginator:
         type: NoPagination
 
-  
   spotify_artist:
     type: DeclarativeStream
     name: spotify_artist
     primary_key:
       - uuid
     schema_loader:
-      type: InlineSchemaLoader
-      schema:
-        $schema: http://json-schema.org/schema#
-        properties:
-          country:
-            properties:
-              alpha2:
-                type: string
-              continent_code:
-                type: string
-              name:
-                type: string
-              slug:
-                type: string
-            type: object
-          genre:
-            properties:
-              id:
-                type: number
-              name:
-                type: string
-              slug:
-                type: string
-            type: object
-          image:
-            type: string
-          name:
-            type: string
-          rank:
-            type: number
-          slug:
-            type: string
-          status:
-            type: string
-          subgenres:
-            items:
-              properties:
-                id:
-                  type: number
-                name:
-                  type: string
-                slug:
-                  type: string
-              type: object
-            type: array
-          uuid:
-            type: string
-          verified:
-            type: boolean
-        type: object
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/spotify_artist.json"
     retriever:
       type: SimpleRetriever
       record_selector:
@@ -182,56 +96,15 @@ definitions:
         entity_name: 'artist'
       paginator:
         type: NoPagination
-
-  
+    
   spotify_artist_tracks:
     type: DeclarativeStream
     name: spotify_artist_tracks
     primary_key:
       - uuid
     schema_loader:
-      type: InlineSchemaLoader
-      schema:
-        $schema: http://json-schema.org/schema#
-        properties:
-          artists:
-            items:
-              properties:
-                name:
-                  type: string
-                slug:
-                  type: string
-                uuid:
-                  type: string
-              type: object
-            type: array
-          image:
-            type: string
-          link_id:
-            type: string
-          release_date:
-            type: string
-          sample:
-            type: string
-          slug:
-            type: string
-          streams_12m:
-            type: number
-          streams_1m:
-            type: number
-          streams_1m_growth:
-            type: number
-          streams_1w:
-            type: number
-          streams_1w_growth:
-            type: number
-          streams_all:
-            type: number
-          title:
-            type: string
-          uuid:
-            type: string
-        type: object
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/spotify_artist_tracks.json"
     retriever:
       type: SimpleRetriever
       record_selector:
