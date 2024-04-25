@@ -3,7 +3,7 @@ type: DeclarativeSource
 check:
   type: CheckStream
   stream_names:
-    - spotify_artists
+    - spotify_artist_lookup
 
 definitions:
   requester:
@@ -73,9 +73,9 @@ definitions:
       paginator:
         type: NoPagination
 
-  spotify_artists:
+  spotify_artist_lookup:
     type: DeclarativeStream
-    name: spotify_artists
+    name: spotify_artist_lookup
     primary_key:
       - uuid
     schema_loader:
@@ -97,6 +97,36 @@ definitions:
       paginator:
         type: NoPagination
     
+  spotify_artists:
+    type: DeclarativeStream
+    name: spotify_artists
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/spotify_artists.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/details"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artist_lookup"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+          - stream: "#/definitions/spotify_track_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        type: NoPagination
+
   spotify_tracks:
     type: DeclarativeStream
     name: spotify_tracks
@@ -118,7 +148,7 @@ definitions:
       partition_router:
         type: SubstreamPartitionRouter
         parent_stream_configs:
-          - stream: "#/definitions/spotify_artists"
+          - stream: "#/definitions/spotify_artist_lookup"
             parent_key: "uuid"
             partition_field: "parent_id"
           - stream: "#/definitions/spotify_track_artists"
@@ -129,8 +159,9 @@ definitions:
 
 streams:
   - "#/definitions/spotify_track_artists"
-  - "#/definitions/spotify_artists"
+  - "#/definitions/spotify_artist_lookup"
   - "#/definitions/spotify_tracks"
+  - "#/definitions/spotify_artists"
 
 spec:
   connection_specification:
@@ -156,5 +187,6 @@ spec:
 metadata:
   autoImportSchema:
     spotify_track_artists: true
-    spotify_artists: true
+    spotify_artist_lookup: true
     spotify_tracks: true
+    spotify_artists: true

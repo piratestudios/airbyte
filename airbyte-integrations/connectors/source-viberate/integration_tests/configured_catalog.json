@@ -11,7 +11,7 @@
     },
     {
       "stream": {
-        "name": "spotify_artists",
+        "name": "spotify_artist_lookup",
         "json_schema": {},
         "supported_sync_modes": ["full_refresh"]
       },
@@ -21,6 +21,15 @@
     {
       "stream": {
         "name": "spotify_tracks",
+        "json_schema": {},
+        "supported_sync_modes": ["full_refresh"]
+      },
+      "sync_mode": "full_refresh",
+      "destination_sync_mode": "overwrite"
+    },
+    {
+      "stream": {
+        "name": "spotify_artists",
         "json_schema": {},
         "supported_sync_modes": ["full_refresh"]
       },
