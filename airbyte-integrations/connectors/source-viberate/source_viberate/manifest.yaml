@@ -3,7 +3,7 @@ type: DeclarativeSource
 check:
   type: CheckStream
   stream_names:
-    - spotify_track
+    - spotify_artists
 
 definitions:
   requester:
@@ -49,21 +49,21 @@ definitions:
     class_name: source_viberate.components.SpotifyPartitionRouter
     cursor_field: spotify_id
 
-  spotify_track:
+  spotify_track_artists:
     type: DeclarativeStream
-    name: spotify_track
+    name: spotify_track_artists
     primary_key:
       - uuid
     schema_loader:
       type: JsonFileSchemaLoader
-      file_path: "./source_viberate/schemas/spotify_track.json"
+      file_path: "./source_viberate/schemas/spotify_track_artists.json"
     retriever:
       type: SimpleRetriever
       record_selector:
         type: RecordSelector
         extractor:
           type: DpathExtractor
-          field_path: [ "data" ]
+          field_path: [ "data", "artists", "*" ]
       requester:
         $ref: "#/definitions/requester"
         path: "track/by-channel/spotify/{{ stream_partition.spotify_id }}"
@@ -73,14 +73,14 @@ definitions:
       paginator:
         type: NoPagination
 
-  spotify_artist:
+  spotify_artists:
     type: DeclarativeStream
-    name: spotify_artist
+    name: spotify_artists
     primary_key:
       - uuid
     schema_loader:
       type: JsonFileSchemaLoader
-      file_path: "./source_viberate/schemas/spotify_artist.json"
+      file_path: "./source_viberate/schemas/spotify_artists.json"
     retriever:
       type: SimpleRetriever
       record_selector:
@@ -97,14 +97,14 @@ definitions:
       paginator:
         type: NoPagination
     
-  spotify_artist_tracks:
+  spotify_tracks:
     type: DeclarativeStream
-    name: spotify_artist_tracks
+    name: spotify_tracks
     primary_key:
       - uuid
     schema_loader:
       type: JsonFileSchemaLoader
-      file_path: "./source_viberate/schemas/spotify_artist_tracks.json"
+      file_path: "./source_viberate/schemas/spotify_tracks.json"
     retriever:
       type: SimpleRetriever
       record_selector:
@@ -118,16 +118,19 @@ definitions:
       partition_router:
         type: SubstreamPartitionRouter
         parent_stream_configs:
-          - stream: "#/definitions/spotify_artist"
+          - stream: "#/definitions/spotify_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+          - stream: "#/definitions/spotify_track_artists"
             parent_key: "uuid"
             partition_field: "parent_id"
       paginator:
         $ref: "#/definitions/paginator"
 
 streams:
-  - "#/definitions/spotify_track"
-  - "#/definitions/spotify_artist"
-  - "#/definitions/spotify_artist_tracks"
+  - "#/definitions/spotify_track_artists"
+  - "#/definitions/spotify_artists"
+  - "#/definitions/spotify_tracks"
 
 spec:
   connection_specification:
@@ -152,6 +155,6 @@ spec:
   type: Spec
 metadata:
   autoImportSchema:
-    spotify_track: true
-    spotify_artist: true
-    spotify_artist_tracks: true
+    spotify_track_artists: true
+    spotify_artists: true
+    spotify_tracks: true

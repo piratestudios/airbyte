@@ -2,7 +2,7 @@
   "streams": [
     {
       "stream": {
-        "name": "spotify_track",
+        "name": "spotify_track_artists",
         "json_schema": {},
         "supported_sync_modes": ["full_refresh"]
       },
@@ -11,7 +11,7 @@
     },
     {
       "stream": {
-        "name": "spotify_artist",
+        "name": "spotify_artists",
         "json_schema": {},
         "supported_sync_modes": ["full_refresh"]
       },
@@ -20,7 +20,7 @@
     },
     {
       "stream": {
-        "name": "spotify_artist_tracks",
+        "name": "spotify_tracks",
         "json_schema": {},
         "supported_sync_modes": ["full_refresh"]
       },
