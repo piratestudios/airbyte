@@ -85,7 +85,6 @@ class SpotifyPartitionRouter(StreamSlicer):
                 spotify_id
             from `hardy-force-319814.pirate_dbt_prod.artist_ops_spotify_links`
             where link_type = '{self.entity_name}'
-            limit 10
         """
 
         values = (
