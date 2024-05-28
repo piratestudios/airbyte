@@ -127,6 +127,40 @@ definitions:
       paginator:
         type: NoPagination
 
+  spotify_artist_links:
+    type: DeclarativeStream
+    name: spotify_artist_links
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/spotify_artist_links.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data","data" ]
+        record_filter:
+          condition: "{{ record['channel'] == 'spotify' }}"
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/links"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        type: NoPagination
+    transformations:
+      - type: AddFields
+        fields:
+          - path: [ "uuid" ]
+            value: "{{ stream_partition.parent_id }}"
+
   spotify_tracks:
     type: DeclarativeStream
     name: spotify_tracks
@@ -157,9 +191,9 @@ definitions:
       paginator:
         $ref: "#/definitions/paginator"
 
+
 streams:
-  - "#/definitions/spotify_track_artists"
-  - "#/definitions/spotify_artist_lookup"
+  - "#/definitions/spotify_artist_links"
   - "#/definitions/spotify_tracks"
   - "#/definitions/spotify_artists"
 
@@ -187,6 +221,7 @@ spec:
 metadata:
   autoImportSchema:
     spotify_track_artists: true
+    spotify_artist_links: true
     spotify_artist_lookup: true
     spotify_tracks: true
     spotify_artists: true
