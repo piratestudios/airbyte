@@ -191,11 +191,32 @@ definitions:
       paginator:
         $ref: "#/definitions/paginator"
 
+  festivals:
+    type: DeclarativeStream
+    name: festivals
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/festivals.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "festival/viberate/chart"
+      paginator:
+        $ref: "#/definitions/paginator"
 
 streams:
   - "#/definitions/spotify_artist_links"
   - "#/definitions/spotify_tracks"
   - "#/definitions/spotify_artists"
+  - "#/definitions/festivals"
 
 spec:
   connection_specification:
@@ -225,3 +246,4 @@ metadata:
     spotify_artist_lookup: true
     spotify_tracks: true
     spotify_artists: true
+    festivals: true
