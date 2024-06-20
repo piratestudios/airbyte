@@ -3,7 +3,7 @@ type: DeclarativeSource
 check:
   type: CheckStream
   stream_names:
-    - spotify_artist_lookup
+    - festivals
 
 definitions:
   requester:
@@ -23,6 +23,8 @@ definitions:
     error_handler:
       response_filters:
           - http_codes: [ 404 ]
+            action: IGNORE
+          - http_codes: [ 500 ]
             action: IGNORE
           - http_codes: [ 429 ]
             action: RETRY
@@ -191,6 +193,186 @@ definitions:
       paginator:
         $ref: "#/definitions/paginator"
 
+  tiktok_fanbase:
+    type: DeclarativeStream
+    name: tiktok_fanbase
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/tiktok_fanbase.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/tiktok/fanbase-historical"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artist_lookup"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+          - stream: "#/definitions/spotify_track_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        $ref: "#/definitions/paginator"
+
+  tiktok_likes:
+    type: DeclarativeStream
+    name: tiktok_likes
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/tiktok_likes.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/tiktok/likes-historical"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artist_lookup"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+          - stream: "#/definitions/spotify_track_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        $ref: "#/definitions/paginator"
+
+  instagram_fanbase:
+    type: DeclarativeStream
+    name: instagram_fanbase
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/instagram_fanbase.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/instagram/fanbase-historical"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artist_lookup"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+          - stream: "#/definitions/spotify_track_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        $ref: "#/definitions/paginator"
+
+  instagram_likes:
+    type: DeclarativeStream
+    name: instagram_likes
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/instagram_likes.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/instagram/likes-historical"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artist_lookup"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+          - stream: "#/definitions/spotify_track_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        $ref: "#/definitions/paginator"
+
+  spotify_fanbase:
+    type: DeclarativeStream
+    name: spotify_fanbase
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/spotify_fanbase.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/spotify/fanbase-historical"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artist_lookup"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+          - stream: "#/definitions/spotify_track_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        $ref: "#/definitions/paginator"
+
+  spotify_streams:
+    type: DeclarativeStream
+    name: spotify_streams
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/spotify_streams.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "artist/{{ stream_partition.parent_id }}/spotify/streams-historical"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/spotify_artist_lookup"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+          - stream: "#/definitions/spotify_track_artists"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        $ref: "#/definitions/paginator"
+
   festivals:
     type: DeclarativeStream
     name: festivals
@@ -212,11 +394,87 @@ definitions:
       paginator:
         $ref: "#/definitions/paginator"
 
+  festival_editions:
+    type: DeclarativeStream
+    name: festival_editions
+    primary_key:
+      - edition_uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/festival_editions.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data","data", "*", "*" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "festival/{{ stream_partition.parent_id }}/editions"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/festivals"
+            parent_key: "uuid"
+            partition_field: "parent_id"
+      paginator:
+        type: NoPagination
+    transformations:
+      - type: AddFields
+        fields:
+          - path: [ "uuid" ]
+            value: "{{ stream_partition.parent_id }}"
+
+  festival_lineups:
+    type: DeclarativeStream
+    name: festival_lineups
+    primary_key:
+      - uuid
+    schema_loader:
+      type: JsonFileSchemaLoader
+      file_path: "./source_viberate/schemas/festival_lineups.json"
+    retriever:
+      type: SimpleRetriever
+      record_selector:
+        type: RecordSelector
+        extractor:
+          type: DpathExtractor
+          field_path: [ "data","data" ]
+      requester:
+        $ref: "#/definitions/requester"
+        path: "festival/{{ stream_slice.parent_slice.parent_id }}/lineup"
+      partition_router:
+        type: SubstreamPartitionRouter
+        parent_stream_configs:
+          - stream: "#/definitions/festival_editions"
+            parent_key: "edition_uuid"
+            partition_field: "parent_id"
+            request_option:
+              type: RequestOption
+              field_name: "edition_uuid"
+              inject_into: "request_parameter"
+      paginator:
+        type: NoPagination
+    transformations:
+      - type: AddFields
+        fields:
+          - path: [ "edition_uuid" ]
+            value: "{{ stream_slice.parent_id }}"
+
 streams:
   - "#/definitions/spotify_artist_links"
   - "#/definitions/spotify_tracks"
   - "#/definitions/spotify_artists"
+  - "#/definitions/spotify_fanbase"
+  - "#/definitions/spotify_streams"
   - "#/definitions/festivals"
+  - "#/definitions/festival_editions"
+  - "#/definitions/festival_lineups"
+  - "#/definitions/tiktok_fanbase"
+  - "#/definitions/tiktok_likes"
+  - "#/definitions/instagram_fanbase"
+  - "#/definitions/instagram_likes"
 
 spec:
   connection_specification:
@@ -247,3 +505,11 @@ metadata:
     spotify_tracks: true
     spotify_artists: true
     festivals: true
+    festival_editions: true
+    festival_lineups: true
+    tiktok_fanbase: true
+    tiktok_likes: true
+    instagram_fanbase: true
+    instagram_likes: true
+    spotify_fanbase: true
+    spotify_streams: true
